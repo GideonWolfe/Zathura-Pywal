@@ -1,6 +1,6 @@
 # Zathura-Pywal
 ![alt text](https://i.imgur.com/ETGxlfY.jpg)
-![alt text](https://i.imgur.com/ScrUYrc.jpg)
+![alt text](https://i.imgur.com/qCxiPjD.png)
 
 Zathura-Pywal is a set of helper scripts that dynamically theme zathura based on colors set by [pywal](https://github.com/dylanaraps/pywal).
 
