@@ -5,13 +5,15 @@ FILEPATH=$(readlink -f "$1")
 old_xdg="XDG_CONFIG_HOME"
 
 # build a temporary config directory
-XDG_CONFIG_HOME=$(mktemp -d)
+xdg_tmp=$(mktemp -d)
 # build the zathura directory
-mkdir -p "$XDG_CONFIG_HOME/zathura"
+mkdir -p "$xdg_tmp/zathura"
 
+# generate a config file
+echo "# temporary zathura config" > "$xdg_tmp/zathura/zathurarc"
 # get original options
-cat "$old_xdg/zathura/zathurarc" > "XDG_CONFIG_HOME/zathura/zathurarc"
+[ -f $old_xdg/zathura/zathurarc ] && cat "$old_xdg/zathura/zathurarc" >> "$xdg_tmp/zathura/zathurarc"
 # add the colors
-genzathurarc >> "XDG_CONFIG_HOME/zathura/zathurarc"
-
-zathura "$FILEPATH" &
+genzathurarc >> "$xdg_tmp/zathura/zathurarc"
+echo "temporary config at $xdg_tmp/zathura/zathurarc"
+zathura --config-dir="$xdg_tmp" "$FILEPATH" &

@@ -15,7 +15,7 @@ chmod u+x ./zth
 cp ./genzathurarc "$BINPATH/genzathurarc"
 cp ./zth "$BINPATH/zth"
 
-cat <EOM
+cat <<EOM
 Installed to "$BINPATH"
 Make sure "$BINPATH" is in your PATH
 you may do so by adding the following line to your bashrc or zshrc
