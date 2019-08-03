@@ -1,4 +1,17 @@
-#!/bin/bash
+#!/bin/sh
 FILEPATH=$(readlink -f "$1")
-genzathurarc > $HOME/.config/zathura/zathurarc
+
+# save the real XDG root
+old_xdg="XDG_CONFIG_HOME"
+
+# build a temporary config directory
+XDG_CONFIG_HOME=$(mktemp -d)
+# build the zathura directory
+mkdir -p "$XDG_CONFIG_HOME/zathura"
+
+# get original options
+cat "$old_xdg/zathura/zathurarc" > "XDG_CONFIG_HOME/zathura/zathurarc"
+# add the colors
+genzathurarc >> "XDG_CONFIG_HOME/zathura/zathurarc"
+
 zathura "$FILEPATH" &
