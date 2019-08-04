@@ -5,8 +5,6 @@
 . $HOME/.cache/wal/colors.sh
 
 cat <<CONF
-# colorconfigs form wal
-
 set recolor "true"
 
 set completion-bg "$background"
@@ -37,4 +35,8 @@ set index-active-fg "$background"
 set render-loading-bg "$background"
 set render-loading-fg "$foreground"
 
+set smooth-scroll true
+set window-title-home-tilde true
+set statusbar-basename true
+set selection-clipboard clipboard
 CONF
