@@ -1,4 +1,18 @@
-#!/bin/bash
+#!/bin/sh
 FILEPATH=$(readlink -f "$1")
-genzathurarc > $HOME/.config/zathura/zathurarc
-zathura "$FILEPATH" &
+
+# build a temporary config directory
+zathura_tmp=$(mktemp -d)
+# build the zathura directory
+
+# generate a config file
+echo "# temporary zathura config" > "$zathura_tmp/zathurarc"
+
+# get original options
+[ -f $XDG_CONFIG_HOME/zathura/zathurarc ] && cat "$XDG_CONFIG_HOME/zathura/zathurarc" >> "$zathura_tmp/zathurarc" || \
+[ -f $HOME/.config/zathura/zathurarc ] && cat "$HOME/.config/zathura/zathurarc" >> "$zathura_tmp/zathurarc" 
+
+# add the colors
+genzathurarc >> "$zathura_tmp/zathurarc"
+
+zathura --config-dir="$zathura_tmp" "$FILEPATH" &
