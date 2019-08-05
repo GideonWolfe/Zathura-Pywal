@@ -1,5 +1,4 @@
 #!/bin/sh
-FILEPATH=$(readlink -f "$1")
 
 # build a temporary config directory
 zathura_tmp=$(mktemp -d)
@@ -15,4 +14,4 @@ echo "# temporary zathura config" > "$zathura_tmp/zathurarc"
 # add the colors
 genzathurarc >> "$zathura_tmp/zathurarc"
 PATH="/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin:/"
-zathura --config-dir="$zathura_tmp" "$FILEPATH" &
+zathura --config-dir="$zathura_tmp" "$@" &
