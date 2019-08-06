@@ -9,11 +9,11 @@ mkdir -p "$BINPATH"
 
 # make the scripts executable
 chmod u+x ./genzathurarc
-chmod u+x ./zth
+chmod u+x ./zathura
 
 # link the scripts to the PATH
 ln -s "$(pwd)/genzathurarc" "$BINPATH/genzathurarc"
-ln -s "$(pwd)/zth" "$BINPATH/zth"
+ln -s "$(pwd)/zathura" "$BINPATH/zathura"
 
 cat <<EOM
 Installed to "$BINPATH"
