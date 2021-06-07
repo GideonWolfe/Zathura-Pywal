@@ -1,10 +1,9 @@
 #!/bin/sh
+
+# Generates zathura colour configurations
 genzathurarc () {
-#!/bin/sh
-
-# Generates zathura configuration file
-
-. $HOME/.cache/wal/colors.sh
+# shellcheck source=/home/farzat/.cache/wal/colors.sh
+. "$HOME/.cache/wal/colors.sh"
 
 cat <<CONF
 set recolor "true"
@@ -42,6 +41,7 @@ set statusbar-basename true
 set selection-clipboard clipboard
 CONF
 }
+
 # build a temporary config directory
 zathura_tmp=$(mktemp -d)
 # build the zathura directory
