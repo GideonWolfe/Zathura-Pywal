@@ -8,11 +8,9 @@ BINPATH=$HOME/.local/bin
 mkdir -p "$BINPATH"
 
 # make the scripts executable
-chmod u+x ./genzathurarc
 chmod u+x ./zathura
 
 # link the scripts to the PATH
-ln -s "$(pwd)/genzathurarc" "$BINPATH/genzathurarc"
 ln -s "$(pwd)/zathura" "$BINPATH/zathura"
 
 cat <<EOM
