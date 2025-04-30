@@ -8,10 +8,10 @@ zathura_tmp=$(mktemp -d)
 echo "# temporary zathura config" > "$zathura_tmp/zathurarc"
 
 # get original options
-[ -f $XDG_CONFIG_HOME/zathura/zathurarc ] && cat "$XDG_CONFIG_HOME/zathura/zathurarc" >> "$zathura_tmp/zathurarc" || \
-[ -f $HOME/.config/zathura/zathurarc ] && cat "$HOME/.config/zathura/zathurarc" >> "$zathura_tmp/zathurarc" 
+[ -f "$XDG_CONFIG_HOME/zathura/zathurarc" ] && cat "$XDG_CONFIG_HOME/zathura/zathurarc" >> "$zathura_tmp/zathurarc" || \
+[ -f "$HOME/.config/zathura/zathurarc" ] && cat "$HOME/.config/zathura/zathurarc" >> "$zathura_tmp/zathurarc"
 
 # add the colors
 genzathurarc >> "$zathura_tmp/zathurarc"
 PATH="/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin:/"
-zathura --config-dir="$zathura_tmp" "$@" &
+zathura --config-dir="$zathura_tmp" "$@"
